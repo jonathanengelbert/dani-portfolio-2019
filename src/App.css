@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap");
+html {
+  font-size: 15px;
+}
+
+html,
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 100% "Liu Jian Mao Cao", sans-serif;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+body .App {
+  height: 100vh;
+  width: 100vw;
+}
+
+nav ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  width: 100vw;
+  position: fixed;
+}
+nav ul li {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li:first-of-type {
+  justify-content: left;
+}
+nav ul li:last-of-type {
+  cursor: pointer;
+}
+nav ul a,
+nav ul li:last-of-type {
+  text-decoration: none;
+  font-size: 2rem;
+  color: white;
+}
+nav ul a:hover, nav #music ul a.active, #music nav ul a.active,
+nav ul li:last-of-type:hover,
+nav #music ul li.active:last-of-type,
+#music nav ul li.active:last-of-type {
+  font-weight: bolder;
+}
+nav ul a.active,
+nav ul li:last-of-type.active {
+  color: #ffcccc;
+}
+nav ul #home-link {
+  text-align: left;
+  font-size: 3rem;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 2% 0 2%;
+  background-color: black;
+}
+
+#home-screen {
+  height: 100vh;
+  width: 100vw;
+  background: url(/images/dani-stairs-landscape.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+#music {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  margin: 0 auto;
+  top: 15vh;
+}
+#music .player {
+  height: 50%;
+  width: 100%;
+  position: relative;
+  top: 20%;
+}
+#music .player #play-pause-button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+#music .player .play-button {
+  border: 0;
+  background: black;
+  box-sizing: border-box;
+  width: 0;
+  height: 74px;
+  border-color: transparent transparent transparent white;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+}
+#music .player .play-button.paused {
+  border-style: double;
+  border-width: 0px 0 0px 60px;
+}
+#music .player .play-button:hover, #music .player ul .play-button.active, #music ul .player .play-button.active {
+  border-color: transparent transparent transparent #404040;
+}
+#music ul {
+  list-style: none;
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#music ul li {
+  position: relative;
+  line-height: 2;
+}
+#music ul li:hover, #music ul li.active {
+  text-shadow: white 1px 1px 2px;
+  color: #ffcccc;
+}
+#music ul .active {
+  font-weight: 900;
+  font-size: 3rem;
+}
+#music .progress-bar {
+  position: relative;
+  height: 10px;
+  width: 80%;
+  border-radius: 50px;
+  border: 2px solid white;
+  margin: 5% auto;
+}
+#music .filler {
+  background-color: white;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+}
+
+#videos {
+  width: 100vw;
+  height: 100vh;
+}
+#videos section {
+  position: relative;
+  top: 30vh;
+  height: 50vh;
+  display: flex;
+}
+#videos .playlist {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  font-size: 2rem;
+}
+#videos .playlist ul {
+  list-style: none;
+  height: 100%;
+}
+#videos .playlist ul li {
+  line-height: 2;
+  position: relative;
+  top: 30%;
+  cursor: pointer;
+}
+#videos .playlist ul li:hover, #videos .playlist #music ul li.active, #music #videos .playlist ul li.active {
+  font-weight: bold;
+}
+
+#about {
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Liu Jian Mao Cao", sans-serif;
+}
+#about ul, #about li {
+  margin: 0;
+}
+#about section {
+  position: relative;
+  top: 20vh;
+  margin: 0 5px 0 5px 0;
+  display: flex;
+  align-items: center;
+}
+#about .bio-pic {
+  width: 60%;
+  float: left;
+  text-align: center;
+}
+#about .bio-pic img {
+  max-height: 100%;
+  max-width: 90%;
+  border-radius: 50%;
+}
+#about .bio {
+  width: 50%;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  #about section {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #about .bio-pic {
+    order: 2;
+    width: 60%;
+    margin: 0 auto;
+  }
+  #about .bio {
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+.page404 {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.page404 h1 {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 6px;
+  }
+
+  #home-screen {
+    height: 100vh;
+    width: 100vw;
+    background: url(/images/dani-stairs-portrait.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */
