@@ -1,49 +1,38 @@
 import React from "react";
 
 class Player extends React.Component {
-  componentDidMount() {
-    this.audio.addEventListener("timeupdate", () => {
-      if (this.audio) {
-        this.props.updateTime(this.audio.currentTime);
-      }
-    });
-
-    this.audio.onloadedmetadata = () =>
-      this.props.getDuration(this.audio.duration);
-  }
-
-  render() {
-    return (
-      <div className={"player"}>
-        <audio
-          ref={ref => (this.audio = ref)}
-          src={this.props.currentSrc}
-        ></audio>
-
-        <button
-          // onClick={() => this.props.play(this.audio)}
-          onClick={() => this.props.play(this.audio)}
-          id={"play-pause-button"}
-          className={this.props.playing ? "play-button paused" : "play-button"}
-        ></button>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-class Music extends React.Component {
   constructor(props) {
     super(props);
-
-    this.updateTime = this.updateTime.bind(this);
-    this.getDuration = this.getDuration.bind(this);
-    this.play = this.play.bind(this);
-
     this.state = {
       tracks: [
-        { id: 1, title: "Sample", src: "/audio/sample.mp3" },
-        { id: 2, title: "Cello", src: "/audio/cello.mp3" }
+        {
+          id: 1,
+          title: "Ring",
+          src: "/audio/ring.mp3",
+          length: "1:47",
+          type: "sample"
+        },
+        {
+          id: 2,
+          title: "Very Last Drop",
+          src: "/audio/very-last-drop.mp3",
+          length: "0:59",
+          type: "sample"
+        },
+        {
+          id: 3,
+          title: "Nonsense in Emaj",
+          src: "/audio/nonsense.mp3",
+          length: "2:21",
+          type: "sample"
+        },
+        {
+          id: 4,
+          title: "I let myself fell all the time",
+          src: "/audio/i-let-myself-feel-all-the-time.mp3",
+          length: "2:21",
+          type: "song"
+        },
       ],
 
       currentId: null,
@@ -56,19 +45,20 @@ class Music extends React.Component {
     };
   }
 
-  play(audioRef) {
-    if (audioRef.paused) {
-      audioRef.play();
+  play() {
+    console.log(this.audio.src);
+    if (this.audio.paused) {
+      this.audio.play();
     } else {
-      audioRef.pause();
+      this.audio.pause();
     }
 
-    this.setState({ playing: !audioRef.paused });
+    this.setState({ playing: !this.audio.paused });
   }
 
   updateTime(time) {
     const currentTime = time;
-    this.setState({ currentTime: currentTime });
+    this.setState({ currentTime: Math.floor(currentTime) });
   }
 
   getDuration(time) {
@@ -78,24 +68,30 @@ class Music extends React.Component {
 
   selectTrack(e) {
     const currentTrack = this.state.tracks.filter(t => {
+      console.log(e.target);
       return t.title === e.target.innerHTML;
     })[0];
 
-    const status =
-      currentTrack.title === this.state.currentTitle && this.state.playing
-        ? true
-        : false;
+    console.log(this.state.currentTitle);
+    console.log(currentTrack);
 
     const { id, title, src } = currentTrack;
     this.setState({
       currentId: id,
       currentTitle: title,
-      currentSrc: src,
-      playing: status
+      currentSrc: src
     });
   }
 
   componentDidMount() {
+    this.audio.addEventListener("timeupdate", () => {
+      if (this.audio) {
+        this.updateTime(this.audio.currentTime);
+      }
+    });
+
+    this.audio.onloadedmetadata = () => this.getDuration(this.audio.duration);
+
     const { id, title, src } = this.state.tracks[0];
     this.setState({
       currentId: id,
@@ -104,24 +100,33 @@ class Music extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.currentTitle !== this.state.currentTitle &&
+      this.state.playing
+    ) {
+      console.log(this.state.playing);
+      this.play();
+    }
+  }
+
   render() {
     /*PROGRESS BAR ---------------------------------------------*/
     const ProgressBar = props => {
-      function updateFiller(){
-        // console.log(this.progressBar);
-         console.log(this.progressBar);
-
+      function updateFiller(e) {
+        console.log(e.nativeEvent.offsetX);
       }
       return (
-        <div className="progress-bar" 
-          ref={ref => this.progressBar = ref}
-          onClick={(e) => updateFiller()}
-          >
+        <div
+          className="progress-bar"
+          // ref={ref => (this.progressBar = ref)}
+          onClick={e => updateFiller(e)}
+        >
           <Filler />
         </div>
       );
     };
-   
+
     const Filler = props => {
       return (
         <div
@@ -132,37 +137,77 @@ class Music extends React.Component {
         />
       );
     };
-
-    /*TRACK LIST---------------------------------------------*/
-
-    const trackList = this.state.tracks.map(t => {
-      return (
-        <li
-          key={t.id}
-          onClick={e => this.selectTrack(e)}
-          className={t.title === this.state.currentTitle ? "active" : null}
-        >
-          {t.title}
-        </li>
-      );
+    const sampleList = this.state.tracks.map(t => {
+      if (t.type === "sample") {
+        return (
+          <li
+            key={t.id}
+            onClick={e => this.selectTrack(e)}
+            className={t.title === this.state.currentTitle ? "active" : null}
+          >
+            {t.title}
+          </li>
+        );
+      }
     });
+    const songList = this.state.tracks.map(t => {
+      if (t.type === "song") {
+        return (
+          <li
+            key={t.id}
+            onClick={e => this.selectTrack(e)}
+            className={t.title === this.state.currentTitle ? "active" : null}
+          >
+            {t.title}
+          </li>
+        );
+      }
+    });
+    return (
+      <div>
+        <div className={"player"}>
+          <audio
+            ref={ref => (this.audio = ref)}
+            src={this.state.currentSrc}
+          ></audio>
+          <div className={"controls"}>
+            <button
+              onClick={() => this.play()}
+              id={"play-pause-button"}
+              className={
+                this.state.playing ? "play-button paused" : "play-button"
+              }
+            ></button>
+            <ProgressBar />
+            <p>{` ${'0:00' + this.state.currentTime}`}</p>
+          </div>
+
+          {/* {this.state.children} */}
+        </div>
+        <div className={"track-list"}>
+          <ul>
+            <span>Song Samples</span>
+            {sampleList}
+          
+          </ul>
+          <hr />
+          <ul>
+            <span>Vocal Works</span>
+            {songList}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Music extends React.Component {
+  render() {
+    /*TRACK LIST---------------------------------------------*/
 
     return (
       <div id={"music"}>
-        <Player
-          currentSrc={this.state.currentSrc}
-          play={this.play}
-          updateTime={this.updateTime}
-          getDuration={this.getDuration}
-          playing={this.state.playing}
-        >
-          <ProgressBar />
-          <p>
-            {Math.floor(this.state.currentTime)}:
-            {Math.floor(this.state.duration)}
-          </p>
-        </Player>
-        <ul>{trackList}</ul>
+        <Player />
       </div>
     );
   }
