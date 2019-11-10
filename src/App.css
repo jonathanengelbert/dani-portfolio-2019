@@ -227,7 +227,6 @@ nav ul #home-link {
 #about .bio-pic img {
   max-height: 100%;
   max-width: 90%;
-  border-radius: 50%;
 }
 #about .bio {
   width: 50%;
@@ -270,6 +269,31 @@ nav ul #home-link {
     width: 100vw;
     background: url(/images/dani-stairs-portrait.jpg) no-repeat center center fixed;
     background-size: cover;
+  }
+}
+#contact {
+  height: 50%;
+  width: 80%;
+  position: relative;
+  top: 30%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#contact a {
+  color: white;
+  font-size: 15vw;
+}
+
+@media (max-width: 660px) {
+  #contact {
+    flex-direction: column;
+    height: 60%;
+    top: 20%;
+  }
+  #contact a {
+    font-size: 25vw;
   }
 }
 

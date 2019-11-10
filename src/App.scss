@@ -149,7 +149,7 @@ nav {
         border-color: transparent transparent transparent #404040;
       }
     }
-        
+
     p {
       text-align: center;
     }
@@ -171,7 +171,6 @@ nav {
     span {
       color: red;
       text-align: left;
-      
     }
   }
 
@@ -187,7 +186,7 @@ nav {
     // align-items: center;
     // top: 40%;
     // transform: translateY(-50%);
-    
+
     hr {
       color: white;
     }
@@ -210,23 +209,21 @@ nav {
     }
   }
 
-    .progress-bar {
-      position: relative;
-      height: 10px;
-      width: 80%;
-      border-radius: 50px;
-      border: 2px solid white;
-      margin: 5% auto;
-  
+  .progress-bar {
+    position: relative;
+    height: 10px;
+    width: 80%;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin: 5% auto;
+  }
 
-    }
-
-    .filler {
-      background-color: white;
-      height: 100%;
-      border-radius: inherit;
-      transition: width .2s ease-in;
-    }
+  .filler {
+    background-color: white;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.2s ease-in;
+  }
 }
 
 //VIDEOS
@@ -299,7 +296,6 @@ nav {
     img {
       max-height: 100%;
       max-width: 90%;
-      border-radius: 50%;
     }
   }
 
@@ -356,6 +352,34 @@ nav {
     background: url(/images/dani-stairs-portrait.jpg) no-repeat center center
       fixed;
     background-size: cover;
+  }
+}
+
+#contact {
+  height: 50%;
+  width: 80%;
+  position: relative;
+  top: 30%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    color: white;
+    font-size: 15vw;
+  }
+}
+
+@media (max-width: 660px){
+  #contact {
+    flex-direction: column;
+    height: 60%;
+    top: 20%;
+
+    a {
+      font-size: 25vw;
+    }
   }
 }
 
