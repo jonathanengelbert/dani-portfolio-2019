@@ -20,7 +20,11 @@ const Contact = props => {
         </a>
       </div>
       <div>
-        <a target={"_blank"} href={"mailto:dtatarianmusic@gmail.com"} title={"Email"}>
+        <a
+          target={"_blank"}
+          href={"mailto:dtatarianmusic@gmail.com"}
+          title={"Email"}
+        >
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
       </div>

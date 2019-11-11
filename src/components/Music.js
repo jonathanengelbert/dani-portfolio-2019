@@ -101,21 +101,10 @@ class Player extends React.Component {
     });
 
     this.audio.onloadedmetadata = () => this.getDuration(this.audio.duration);
-
-    // const { id, title, src } = this.state.tracks[0];
-    // this.setState({
-    //   currentId: id,
-    //   currentTitle: title,
-    //   currentSrc: src
-    // });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      prevState.currentTitle !== this.state.currentTitle
-      // this.state.playing
-    ) {
-      console.log(this.state.playing);
+    if (prevState.currentTitle !== this.state.currentTitle) {
       this.play();
     }
   }
@@ -124,7 +113,7 @@ class Player extends React.Component {
     /*PROGRESS BAR ---------------------------------------------*/
     const ProgressBar = props => {
       function updateFiller(e) {
-        console.log(e.nativeEvent.offsetX);
+        // console.log(e.nativeEvent.offsetX);
       }
       return (
         <div

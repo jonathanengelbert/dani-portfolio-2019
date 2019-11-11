@@ -18,9 +18,7 @@ const home = props => {
           works for short films, online magazines, and TRESemme Hair Care.
         </p>
       </div>
-      <p className={'attribution'}>
-        Photo by Peter Dolshun
-      </p>
+      <p className={"attribution"}>Photo by Peter Dolshun</p>
     </div>
   );
 };

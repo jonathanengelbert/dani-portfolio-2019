@@ -1,9 +1,9 @@
 import React from "react";
-import Contact from './Contact'
+import Contact from "./Contact";
 
 function Footer() {
   return (
-    <div id={'footer'}>
+    <div id={"footer"}>
       <Contact />
     </div>
   );

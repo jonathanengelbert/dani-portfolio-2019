@@ -22,9 +22,9 @@ class Videos extends React.Component {
       {
         label: "Open Your Eyes Sunnies Kickstarter",
         url: "https://www.youtube.com/watch?v=9xR5ubMPYL8",
-        attribution: 'Written and Produced by Atlee Feingold',
-        attribution2: 'Sarah Maglaras, Director of Photography',
-      },
+        attribution: "Written and Produced by Atlee Feingold",
+        attribution2: "Sarah Maglaras, Director of Photography"
+      }
     ]
   };
 
@@ -46,11 +46,9 @@ class Videos extends React.Component {
             <li key={t.label} onClick={() => this.load(t.url)}>
               {t.label}
               <span className={"attribution"}> {t.attribution}</span>
-              {t.attribution2
-                ? <span className={"attribution"}> {t.attribution2}</span>
-                : null
-              }
-
+              {t.attribution2 ? (
+                <span className={"attribution"}> {t.attribution2}</span>
+              ) : null}
             </li>
           ))}
         </ul>
@@ -61,19 +59,17 @@ class Videos extends React.Component {
   render() {
     return (
       <div id="videos">
-        
-          <ReactPlayer
-            light={true}
-            className="react-player"
-            url={this.state.url ? this.state.url : this.state.tracks[0].url}
-            controls={true}
-            playing={true}
-            width="100%"
-            height="100%"
-          />
+        <ReactPlayer
+          light={true}
+          className="react-player"
+          url={this.state.url ? this.state.url : this.state.tracks[0].url}
+          controls={true}
+          playing={true}
+          width="100%"
+          height="100%"
+        />
 
-          {this.buildPlaylist()}
-        
+        {this.buildPlaylist()}
       </div>
     );
   }
