@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap");
 
 //BRAND STYLES
-$font-stack: "Liu Jian Mao Cao", sans-serif;
+$font-nav: "Liu Jian Mao Cao", sans-serif;
+$font-context: "Julius Sans One", sans-serif;
+
 $primary-color: black;
 
 //DEVICES
@@ -19,7 +22,7 @@ ul {
 }
 
 body {
-  font: 100% $font-stack;
+  font: 100% $font-context;
   background-color: $primary-color;
   color: white;
   height: 100vh;
@@ -36,9 +39,10 @@ nav {
   ul {
     list-style-type: none;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 6fr 1fr 1fr;
     width: 100vw;
     position: fixed;
+    font-family: $font-nav;
 
     li {
       text-align: center;
@@ -74,16 +78,9 @@ nav {
     #home-link {
       //color: white;
       text-align: left;
-      font-size: 3rem;
+      font-size: 4rem;
     }
   }
-}
-
-.section {
-  height: 100vh;
-  width: 100vw;
-  margin: 0 2% 0 2%;
-  background-color: black;
 }
 
 //HOME SCREEN
@@ -94,6 +91,46 @@ nav {
   background: url(/images/dani-stairs-landscape.jpg) no-repeat center center
     fixed;
   background-size: cover;
+
+  .bio-front-page {
+    position: relative;
+    top: 45%;
+    font-size: 1.5rem;
+    float: right;
+    width: 50%;
+    font-weight: 900;
+    text-shadow: black 2px 2px 2px;
+  }
+
+  .attribution {
+    position: fixed;
+    bottom: 5px;
+  }
+
+  @media (max-width: 1515px) {
+    .bio-front-page {
+      top: 30%;
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .bio-front-page {
+      width: 100%;
+      top: 40%;
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 812px) and (max-height: 600px) {
+    .bio-front-page {
+      width: 100%;
+      top: 40%;
+      text-align: center;
+      font-size: 1rem;
+    }
+  }
 }
 
 //MUSIC
@@ -105,9 +142,8 @@ nav {
   margin: 0 auto;
   top: 15vh;
   // border: 1px solid green;
-  display: grid;
-  // align-items: center;
-  // justify-content: center;
+  display: flex;
+  // overflow: scroll;
 
   .player {
     height: 100%;
@@ -162,50 +198,59 @@ nav {
   }
 
   .track-list {
-    height: 100%;
+    align-self: center;
     position: relative;
-    // border: 1px solid white;
     width: 49%;
+    height: 50%;
+    overflow: auto;
     float: right;
+    background-color: #2e2b22;
 
     span {
-      color: red;
-      text-align: left;
+      padding-bottom: 10px;
+    }
+
+    .length {
+      font-size: 1.1rem;
+      text-shadow: none;
+      color: grey;
+      float: right;
     }
   }
 
   ul {
-    // border: 2px solid white;
     position: relative;
     list-style: none;
-    font-size: 3rem;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     padding: 5%;
-    // justify-content: center;
-    // align-items: center;
-    // top: 40%;
-    // transform: translateY(-50%);
 
-    hr {
-      color: white;
+    span {
+      font-weight: 900;
+      text-shadow: white 1px 1px;
+      font-size: 2.5rem;
     }
 
     li {
-      //  position: relative;
-      line-height: 2;
-      text-align: center;
+      font-size: 1.2rem;
+      text-transform: capitalize;
 
       &:hover {
-        text-shadow: white 1px 1px 2px;
+        // text-shadow: white 1px 1px 2px;
         color: #ffcccc;
         cursor: pointer;
       }
     }
+
     .active {
       @extend :hover;
       font-weight: 900;
-      font-size: 4rem;
+      // font-size: 2.5rem;
+    }
+
+    hr {
+      border-color: #5e5858;
     }
   }
 
@@ -226,37 +271,86 @@ nav {
   }
 }
 
+@media (max-width: 720px) {
+  #music {
+    flex-direction: column;
+    align-items: center;
+    font-size: 3rem;
+
+    .player {
+      width: 100%;
+      order: 2;
+    }
+
+    .track-list {
+      width: 100%;
+
+      span {
+        font-size: 3rem;
+      }
+
+      ul {
+        display: flex;
+        justify-items: center;
+      }
+
+      li {
+        font-size: 2.7rem;
+      }
+
+      .length {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
 //VIDEOS
 #videos {
-  width: 100vw;
-  height: 100vh;
+  width: 80vw;
+  height: 60vh;
+  position: relative;
+  top: 20vh;
+  display: flex;
+  align-content: center;
+  margin: 0 auto;
 
-  section {
-    position: relative;
-    top: 30vh;
-    height: 50vh;
-    display: flex;
+  .react-player__preview {
+    // background-color: grey;
+    height: 100vh;
   }
-
-  // .react-player {
-  //   // background-color: grey;
-  // }
 
   .playlist {
     height: 100%;
     width: 50%;
     text-align: center;
     font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e2b22;
 
     ul {
       list-style: none;
       height: 100%;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      // justify-content: center;
 
       li {
-        line-height: 2;
+        // line-height: 2;
+        padding: 3%;
+        margin-bottom: 2%;
         position: relative;
-        top: 30%;
+        // top: 30%;
         cursor: pointer;
+      }
+
+      .attribution {
+        display: block;
+        font-size: 0.9rem;
+        color: grey;
       }
 
       li:hover {
@@ -266,64 +360,95 @@ nav {
   }
 }
 
-//ABOUT
+@media only screen and (max-width: 720px) {
+  #videos {
+    flex-direction: column;
 
-#about {
-  margin: 0 auto;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  font-family: $font-stack;
-
-  ul,
-  li {
-    margin: 0;
-  }
-
-  section {
-    position: relative;
-    top: 20vh;
-    margin: 0 5px 0 5px 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .bio-pic {
-    width: 60%;
-    float: left;
-    text-align: center;
-
-    img {
-      max-height: 100%;
-      max-width: 90%;
+    .react-player {
+      width: 90vw;
+      padding-bottom: 2%;
     }
-  }
 
-  .bio {
-    width: 50%;
-    font-size: 2rem;
-    line-height: 1.5;
+    .playlist {
+      width: 100%;
+
+      ul {
+        font-size: 3.5rem;
+
+        .attribution {
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }
 
-@media (max-width: 1023px) {
-  //one item on top of the other, text first
+@media only screen and (max-width: 812px) and (max-height: 600px) {
+  #music {
+    .track-list {
+      // overflow: auto;
 
-  #about {
-    section {
-      flex-direction: column;
-      justify-content: center;
+      ul {
+        span {
+          font-size: 1rem;
+        }
+        li {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  #videos {
+    background-color: black;
+  }
+}
+
+@media only screen and (max-width: 420px) and (max-height: 600px) {
+  #music {
+    .player {
+      height: 50%;
     }
 
-    .bio-pic {
+    .track-list {
+      // overflow: auto;
+
+      ul {
+        span {
+          font-size: 2rem;
+        }
+        li {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+//IPHONE 5 LANDSCAPE
+// @media only screen and (max-width: 600px) and (max-height:420px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  #music {
+    display: flex;
+    flex-direction: row;
+
+    .player {
+      height: 50%;
+      width: 50%;
+    }
+
+    .track-list {
+      // overflow: auto;
+      width: 50%;
       order: 2;
-      width: 60%;
-      margin: 0 auto;
-    }
 
-    .bio {
-      margin: 0 auto;
-      width: 90%;
+      ul {
+        span {
+          font-size: 2rem;
+        }
+        li {
+          font-size: 1.8rem;
+        }
+      }
     }
   }
 }
@@ -341,9 +466,25 @@ nav {
   }
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 720px) {
   html {
     font-size: 6px;
+  }
+
+  nav {
+    ul {
+      grid-template-columns: 3fr 1fr 1fr;
+
+      #home-link {
+        font-size: 5rem;
+      }
+
+      li {
+        a {
+          font-size: 3rem;
+        }
+      }
+    }
   }
 
   #home-screen {
@@ -356,10 +497,7 @@ nav {
 }
 
 #contact {
-  height: 50%;
-  width: 80%;
-  position: relative;
-  top: 30%;
+  width: 10%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -367,38 +505,28 @@ nav {
 
   a {
     color: white;
-    font-size: 15vw;
+    font-size: 1.5vw;
   }
 }
-
-@media (max-width: 660px){
+@media (max-width: 1200px) {
   #contact {
-    flex-direction: column;
-    height: 60%;
-    top: 20%;
+    width: 30%;
 
+    flex: space-between;
     a {
-      font-size: 25vw;
+      font-size: 4vw;
     }
   }
 }
 
-// @media (max-width: 768px) {
-//   nav {
-//     ul {
-//       grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-//     }
+//FOOTER
 
-//     ul #home-link {
-//       font-size: 1.5rem;
-//     }
-//   }
-//   nav ul a,
-//   nav ul li:last-of-type {
-//     font-size: 1rem;
-//   }
-//   h2,
-//   li {
-//     font-size: 1rem;
-//   }
-// }
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  // height: 5vh;
+  color: white;
+  text-align: center;
+}

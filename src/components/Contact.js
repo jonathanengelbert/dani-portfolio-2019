@@ -1,7 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-
+import {
+  faInstagram,
+  faLinkedin,
+  faSoundcloud
+} from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = props => {
@@ -10,14 +13,14 @@ const Contact = props => {
       <div>
         <a
           target={"_blank"}
-          href="https://www.instagram.com/sweaterpenguin/?hl=en"
+          href="https://www.instagram.com/dtatmusic/"
           title={"Instagram"}
         >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </div>
       <div>
-        <a target={"_blank"} href={"mailto:dtatarian@live.com"} title={"Email"}>
+        <a target={"_blank"} href={"mailto:dtatarianmusic@gmail.com"} title={"Email"}>
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
       </div>
@@ -28,6 +31,15 @@ const Contact = props => {
           title={"LinkedIn"}
         >
           <FontAwesomeIcon icon={faLinkedin} />
+        </a>
+      </div>
+      <div>
+        <a
+          target={"_blank"}
+          href="https://soundcloud.com/danielle-tatarian-876093742"
+          title={"SoundCloud"}
+        >
+          <FontAwesomeIcon icon={faSoundcloud} />
         </a>
       </div>
     </div>

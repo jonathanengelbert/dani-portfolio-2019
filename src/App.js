@@ -1,10 +1,12 @@
 import React from "react";
 import Home from "./components/Home";
-import About from "./components/About";
+// import About from "./components/About";
 import Music from "./components/Music";
 import Videos from "./components/Videos";
-import Contact from "./components/Contact";
+// import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
+
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 
 import "./App.css";
@@ -48,34 +50,36 @@ class App extends React.Component {
                 </NavLink>
               </li>
 
-              <li>
+              {/* <li>
                 <NavLink
 
                   to="/about"
                 >
                   About
                 </NavLink>
-              </li>
+              </li> */}
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/contact"
                 >
                   Contact
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </nav>
           
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
+            {/* <Route exact path="/about" component={About} /> */}
             <Route exact path="/music" component={Music} />
             <Route exact path="/videos" component={Videos} />
-            <Route exact path="/contact" component={Contact} />
+            {/* <Route exact path="/contact" component={Contact} /> */}
             <Route component={NotFound} />
           </Switch>
+          <Footer />
         </BrowserRouter>
+
       </div>
     );
   }

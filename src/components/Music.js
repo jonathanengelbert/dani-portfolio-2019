@@ -7,32 +7,33 @@ class Player extends React.Component {
       tracks: [
         {
           id: 1,
-          title: "Ring",
-          src: "/audio/ring.mp3",
-          length: "1:47",
-          type: "sample"
-        },
-        {
-          id: 2,
-          title: "Very Last Drop",
-          src: "/audio/very-last-drop.mp3",
-          length: "0:59",
-          type: "sample"
-        },
-        {
-          id: 3,
           title: "Nonsense in Emaj",
           src: "/audio/nonsense.mp3",
           length: "2:21",
           type: "sample"
         },
         {
-          id: 4,
-          title: "I let myself fell all the time",
-          src: "/audio/i-let-myself-feel-all-the-time.mp3",
-          length: "2:21",
-          type: "song"
+          id: 2,
+          title: "Ring",
+          src: "/audio/ring.mp3",
+          length: "1:47",
+          type: "sample"
         },
+        {
+          id: 3,
+          title: "Very Last Drop",
+          src: "/audio/very-last-drop.mp3",
+          length: "0:59",
+          type: "sample"
+        },
+
+        {
+          id: 4,
+          title: "I let myself feel all the time",
+          src: "/audio/i-let-myself-feel-all-the-time.mp3",
+          length: "2:00",
+          type: "song"
+        }
       ],
 
       currentId: null,
@@ -46,7 +47,15 @@ class Player extends React.Component {
   }
 
   play() {
-    console.log(this.audio.src);
+    if (!this.audio.src) {
+      const currentTrack = this.state.tracks[0];
+      const { id, title, src } = currentTrack;
+      this.setState({
+        currentId: id,
+        currentTitle: title,
+        currentSrc: src
+      });
+    }
     if (this.audio.paused) {
       this.audio.play();
     } else {
@@ -67,13 +76,14 @@ class Player extends React.Component {
   }
 
   selectTrack(e) {
-    const currentTrack = this.state.tracks.filter(t => {
-      console.log(e.target);
-      return t.title === e.target.innerHTML;
-    })[0];
+    const targetTitle = e.target.innerHTML.substr(
+      0,
+      e.target.innerHTML.indexOf("<")
+    );
 
-    console.log(this.state.currentTitle);
-    console.log(currentTrack);
+    const currentTrack = this.state.tracks.filter(t => {
+      return t.title === targetTitle;
+    })[0];
 
     const { id, title, src } = currentTrack;
     this.setState({
@@ -92,18 +102,18 @@ class Player extends React.Component {
 
     this.audio.onloadedmetadata = () => this.getDuration(this.audio.duration);
 
-    const { id, title, src } = this.state.tracks[0];
-    this.setState({
-      currentId: id,
-      currentTitle: title,
-      currentSrc: src
-    });
+    // const { id, title, src } = this.state.tracks[0];
+    // this.setState({
+    //   currentId: id,
+    //   currentTitle: title,
+    //   currentSrc: src
+    // });
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      prevState.currentTitle !== this.state.currentTitle &&
-      this.state.playing
+      prevState.currentTitle !== this.state.currentTitle
+      // this.state.playing
     ) {
       console.log(this.state.playing);
       this.play();
@@ -137,8 +147,9 @@ class Player extends React.Component {
         />
       );
     };
-    const sampleList = this.state.tracks.map(t => {
-      if (t.type === "sample") {
+    const sampleList = this.state.tracks
+      .filter(t => t.type === "sample")
+      .map(t => {
         return (
           <li
             key={t.id}
@@ -146,12 +157,14 @@ class Player extends React.Component {
             className={t.title === this.state.currentTitle ? "active" : null}
           >
             {t.title}
+            <span className={"length"}> {t.length}</span>
+            <hr />
           </li>
         );
-      }
-    });
-    const songList = this.state.tracks.map(t => {
-      if (t.type === "song") {
+      });
+    const songList = this.state.tracks
+      .filter(t => t.type === "song")
+      .map(t => {
         return (
           <li
             key={t.id}
@@ -159,12 +172,13 @@ class Player extends React.Component {
             className={t.title === this.state.currentTitle ? "active" : null}
           >
             {t.title}
+            <span className={"length"}> {t.length}</span>
+            <hr />
           </li>
         );
-      }
-    });
+      });
     return (
-      <div>
+      <>
         <div className={"player"}>
           <audio
             ref={ref => (this.audio = ref)}
@@ -179,24 +193,23 @@ class Player extends React.Component {
               }
             ></button>
             <ProgressBar />
-            <p>{` ${'0:00' + this.state.currentTime}`}</p>
+            {/* <p>{` ${'0:00' + this.state.currentTime}`}</p> */}
           </div>
 
           {/* {this.state.children} */}
         </div>
         <div className={"track-list"}>
           <ul>
-            <span>Song Samples</span>
+            <span>SONG SAMPLES</span>
             {sampleList}
-          
           </ul>
-          <hr />
+
           <ul>
-            <span>Vocal Works</span>
+            <span>VOCAL WORKS</span>
             {songList}
           </ul>
         </div>
-      </div>
+      </>
     );
   }
 }

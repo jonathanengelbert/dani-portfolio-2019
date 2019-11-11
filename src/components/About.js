@@ -6,7 +6,7 @@ const about = props => {
       <section>
         <div className={"bio-pic"}>
           <img
-            src={"./images/dani-stairs-landscape.jpg"}
+            src={"./images/dani-uw.jpg"}
             alt={"Dani sitting on stairs"}
           />
         </div>
@@ -22,7 +22,7 @@ const about = props => {
           </p>
           <p>
             Since moving to Manhattan in 2018, Danielle began composing original
-            works for short films, online magazines, and TRESemmé.
+            works for short films, online magazines, and TRESemme Hair Care.
           </p>
         </div>
       </section>
