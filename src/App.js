@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./components/Home";
 import Music from "./components/Music";
 import Videos from "./components/Videos";
-import NotFound from "./components/NotFound";
+// import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
@@ -43,7 +43,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/music" component={Music} />
             <Route exact path="/videos" component={Videos} />
-            <Route component={NotFound} />
+            <Route component={Home} />
           </Switch>
           <Footer />
         </BrowserRouter>

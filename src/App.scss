@@ -99,6 +99,8 @@ nav {
     float: right;
     width: 50%;
     font-weight: 900;
+    text-shadow: black 1px 1px 1px;
+
     // text-shadow: black 2px 2px 2px;
   }
 
@@ -438,7 +440,23 @@ nav {
       }
     }
   }
+  #home-screen {
+    
+    .bio-front-page{
+      font-size: 2rem;
+    }
+  }
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait){
+  #home-screen {
+    height: 100vh;
+    .bio-front-page {
+      font-size: 2rem;
+      top: 50%;
+    }
+  }
+} 
 
 // 404
 

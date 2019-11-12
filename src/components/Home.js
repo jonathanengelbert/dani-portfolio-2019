@@ -14,7 +14,7 @@ const home = props => {
           Seattle where she studied classical voice and piano.
         </p>
         <p>
-          Since moving to Manhattan in 2018, Danielle began composing original
+          Since moving to Manhattan in 2018, Danielle has been composing original
           works for short films, online magazines, and TRESemme Hair Care.
         </p>
       </div>
