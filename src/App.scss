@@ -415,38 +415,7 @@ nav {
     }
   }
 }
-//IPHONE 5 LANDSCAPE
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
-  #music {
-    display: flex;
-    flex-direction: row;
 
-    .player {
-      height: 50%;
-      width: 50%;
-    }
-
-    .track-list {
-      width: 50%;
-      order: 2;
-
-      ul {
-        span {
-          font-size: 2rem;
-        }
-        li {
-          font-size: 1.8rem;
-        }
-      }
-    }
-  }
-  #home-screen {
-    
-    .bio-front-page{
-      font-size: 2rem;
-    }
-  }
-}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait){
   #home-screen {
@@ -546,4 +515,38 @@ and (orientation: landscape) {
   // height: 5vh;
   color: white;
   text-align: center;
+}
+
+//IPHONE 5 LANDSCAPE
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  #music {
+    display: flex;
+    flex-direction: row;
+
+    .player {
+      height: 50%;
+      width: 50%;
+    }
+
+    .track-list {
+      width: 50%;
+      order: 2;
+
+      ul {
+        span {
+          font-size: 2rem;
+        }
+        li {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+  
+  #home-screen {
+    
+    .bio-front-page{
+      font-size: 2rem;
+    }
+  }
 }
