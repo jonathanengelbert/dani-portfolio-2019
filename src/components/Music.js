@@ -151,21 +151,21 @@ class Player extends React.Component {
           </li>
         );
       });
-    const songList = this.state.tracks
-      .filter(t => t.type === "song")
-      .map(t => {
-        return (
-          <li
-            key={t.id}
-            onClick={e => this.selectTrack(e)}
-            className={t.title === this.state.currentTitle ? "active" : null}
-          >
-            {t.title}
-            <span className={"length"}> {t.length}</span>
-            <hr />
-          </li>
-        );
-      });
+    // const songList = this.state.tracks
+    //   .filter(t => t.type === "song")
+    //   .map(t => {
+    //     return (
+    //       <li
+    //         key={t.id}
+    //         onClick={e => this.selectTrack(e)}
+    //         className={t.title === this.state.currentTitle ? "active" : null}
+    //       >
+    //         {t.title}
+    //         <span className={"length"}> {t.length}</span>
+    //         <hr />
+    //       </li>
+    //     );
+    //   });
     return (
       <>
         <div className={"player"}>
@@ -193,10 +193,10 @@ class Player extends React.Component {
             {sampleList}
           </ul>
 
-          <ul>
-            <span>VOCAL WORKS</span>
-            {songList}
-          </ul>
+          {/*<ul>*/}
+          {/*  <span>VOCAL WORKS</span>*/}
+          {/*  {songList}*/}
+          {/*</ul>*/}
         </div>
       </>
     );

@@ -14,6 +14,7 @@ const Contact = props => {
         <a
           target={"_blank"}
           href="https://www.instagram.com/dtatmusic/"
+          rel="noopener noreferrer"
           title={"Instagram"}
         >
           <FontAwesomeIcon icon={faInstagram} />
@@ -23,6 +24,7 @@ const Contact = props => {
         <a
           target={"_blank"}
           href={"mailto:dtatarianmusic@gmail.com"}
+          rel="noopener noreferrer"
           title={"Email"}
         >
           <FontAwesomeIcon icon={faEnvelope} />
@@ -32,6 +34,7 @@ const Contact = props => {
         <a
           target={"_blank"}
           href="https://www.linkedin.com/in/danielle-tatarian-4742a1133/"
+          rel="noopener noreferrer"
           title={"LinkedIn"}
         >
           <FontAwesomeIcon icon={faLinkedin} />
@@ -41,6 +44,7 @@ const Contact = props => {
         <a
           target={"_blank"}
           href="https://soundcloud.com/danielle-tatarian-876093742"
+          rel="noopener noreferrer"
           title={"SoundCloud"}
         >
           <FontAwesomeIcon icon={faSoundcloud} />
