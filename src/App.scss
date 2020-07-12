@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap");
 
 //BRAND STYLES
 $font-nav: "Liu Jian Mao Cao", sans-serif;
@@ -475,7 +475,7 @@ and (orientation: landscape) {
   #home-screen {
     height: 100vh;
     width: 100vw;
-    background: url(/images/dani-stairs-portrait.jpg) no-repeat center center
+    background: url(/public/images/dani-stairs-portrait.jpg) no-repeat center center
       fixed;
     background-size: cover;
   }

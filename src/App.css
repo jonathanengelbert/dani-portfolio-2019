@@ -67,7 +67,7 @@ nav ul #home-link {
 #home-screen {
   height: 100vh;
   width: 100vw;
-  background: url(/images/dani-stairs-landscape.jpg) no-repeat center center fixed;
+  background: url(/public/images/dani-stairs-landscape.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 #home-screen .bio-front-page {
@@ -365,7 +365,7 @@ nav ul #home-link {
   #home-screen {
     height: 100vh;
     width: 100vw;
-    background: url(/images/dani-stairs-portrait.jpg) no-repeat center center fixed;
+    background: url(/public/images/dani-stairs-portrait.jpg) no-repeat center center fixed;
     background-size: cover;
   }
 }
