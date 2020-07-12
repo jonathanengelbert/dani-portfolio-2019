@@ -1,6 +1,9 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
+import  obviousMagazine from '../assets/videos/obvious-magazine.mov'
+import tresemme from  '../assets/videos/tresemme.m4v'
+
 class Videos extends React.Component {
   state = {
     tracks: [
@@ -11,12 +14,12 @@ class Videos extends React.Component {
       },
       {
         label: "Obvious Magazine",
-        url: "./videos/obvious-magazine.mov",
+        url: obviousMagazine,
         attribution: "Video by Peter Dolshun"
       },
       {
         label: "TREsemme",
-        url: "./videos/tresemme.m4v",
+        url: tresemme,
         attribution: "Video by Peter Dolshun"
       },
       {

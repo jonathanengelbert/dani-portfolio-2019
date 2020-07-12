@@ -1,5 +1,10 @@
 import React from "react";
 
+// SONG SAMPLES
+import nonsense from '../assets/audio/nonsense.mp3';
+import ring from '../assets/audio/ring.mp3';
+import veryLastDrop from '../assets/audio/very-last-drop.mp3';
+
 class Player extends React.Component {
   constructor(props) {
     super(props);
@@ -8,21 +13,21 @@ class Player extends React.Component {
         {
           id: 1,
           title: "Nonsense in Emaj",
-          src: "/audio/nonsense.mp3",
+          src: nonsense,
           length: "2:21",
           type: "sample"
         },
         {
           id: 2,
           title: "Ring",
-          src: "/audio/ring.mp3",
+          src: ring,
           length: "1:47",
           type: "sample"
         },
         {
           id: 3,
           title: "Very Last Drop",
-          src: "/audio/very-last-drop.mp3",
+          src: veryLastDrop,
           length: "0:59",
           type: "sample"
         },
@@ -113,12 +118,12 @@ class Player extends React.Component {
     /*PROGRESS BAR ---------------------------------------------*/
     const ProgressBar = props => {
       function updateFiller(e) {
-        // console.log(e.nativeEvent.offsetX);
+        console.log(e.nativeEvent.offsetX);
       }
       return (
         <div
           className="progress-bar"
-          // ref={ref => (this.progressBar = ref)}
+          ref={ref => (this.progressBar = ref)}
           onClick={e => updateFiller(e)}
         >
           <Filler />
