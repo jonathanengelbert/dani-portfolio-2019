@@ -1,10 +1,10 @@
 import React from "react";
-import Contact from "./Contact";
+import Social from "./Social";
 
 function Footer() {
   return (
     <div id={"footer"}>
-      <Contact />
+      <Social />
     </div>
   );
 }
