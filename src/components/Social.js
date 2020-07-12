@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import ContactForm from "./Contact/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -7,7 +8,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-const Contact = props => {
+const Social = props => {
+    const [formOpen, setFormOpen] = useState(false);
+
+    const handleCMessageClick = (e) => {
+        e.preventDefault();
+        setFormOpen(true);
+    }
+
   return (
     <div id="contact">
       <div>
@@ -21,11 +29,16 @@ const Contact = props => {
         </a>
       </div>
       <div>
+          <ContactForm
+              setFormOpen={setFormOpen}
+              formOpen={formOpen}
+          />
         <a
+          onClick={e => handleCMessageClick(e)}
           target={"_blank"}
-          href={"mailto:dtatarianmusic@gmail.com"}
+          href={"#"}
           rel="noopener noreferrer"
-          title={"Email"}
+          title={"Message"}
         >
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
@@ -54,4 +67,4 @@ const Contact = props => {
   );
 };
 
-export default Contact;
+export default Social;

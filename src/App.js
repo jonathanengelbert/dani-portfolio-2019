@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeTab: "Danielle Tatarian"
+      activeTab: "Danielle Tatarian",
     };
   }
 
@@ -44,6 +44,7 @@ class App extends React.Component {
             <Route exact path="/videos" component={Videos} />
             <Route component={NotFound} />
           </Switch>
+
           <Footer />
         </BrowserRouter>
       </div>
