@@ -8,6 +8,7 @@ import veryLastDrop from '../assets/audio/very-last-drop.mp3';
 class Player extends React.Component {
     constructor(props) {
         super(props);
+        this.progressBar = React.createRef();
         this.state = {
             tracks: [
                 {
@@ -60,7 +61,8 @@ class Player extends React.Component {
                 currentId: id,
                 currentTitle: title,
                 currentSrc: src
-            });
+            }, this.setState({playing: !this.audio.paused}));
+            return
         }
         if (this.audio.paused) {
             this.audio.play();
@@ -107,11 +109,30 @@ class Player extends React.Component {
         });
     }
 
+    handleTrackEnded() {
+        this.setState({playing: false});
+    }
+
+    handleProgressBarClick(e) {  // EVENT HERE IS THE LOCATION CLICKED ON THE BAR
+        // var percent = event.offsetX / this.offsetWidth;
+        // player.currentTime = percent * player.duration;
+        // progressbar.value = percent / 100;
+        if (this.state.duration){
+            const percent = e.nativeEvent.offsetX / this.progressBar.current.offsetWidth;
+            this.audio.currentTime =  percent * this.state.duration;
+        }
+    }
+
+
     componentDidMount() {
         this.audio.addEventListener("timeupdate", () => {
             if (this.audio) {
                 this.updateTime(this.audio.currentTime);
             }
+        });
+
+        this.audio.addEventListener("ended", () => {
+            this.handleTrackEnded();
         });
 
         this.audio.onloadedmetadata = () => this.getDuration(this.audio.duration);
@@ -126,15 +147,12 @@ class Player extends React.Component {
     render() {
         /*PROGRESS BAR ---------------------------------------------*/
         const ProgressBar = props => {
-            function updateFiller(e) {
-                console.log(e.nativeEvent.offsetX);
-            }
 
             return (
                 <div
                     className="progress-bar"
-                    ref={ref => (this.progressBar = ref)}
-                    onClick={e => updateFiller(e)}
+                    ref={this.progressBar}
+                    onClick={e => this.handleProgressBarClick(e)}
                 >
                     <Filler/>
                 </div>
