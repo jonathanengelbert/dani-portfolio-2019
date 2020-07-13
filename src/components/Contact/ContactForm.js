@@ -53,15 +53,16 @@ const ContactForm = (props) => {
             if (xhr.status === 200) {
                 form.reset();
                 setStatus("SUCCESS" );
+                handleClose()
             } else {
                 setStatus("ERROR");
+                handleClose()
             }
         };
         xhr.send(data);
     }
 
     const handleClose = () => {
-        console.log(props)
         props.setFormOpen(false);
         setStatus(null);
     };
