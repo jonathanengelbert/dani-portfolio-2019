@@ -2,8 +2,8 @@ import React from "react";
 
 // SONG SAMPLES
 import nonsense from '../assets/audio/nonsense.mp3';
-import ring from '../assets/audio/ring.mp3';
 import veryLastDrop from '../assets/audio/very-last-drop.mp3';
+import lightMeUp from '../assets/audio/light-me-up.mp3';
 
 class Player extends React.Component {
     constructor(props) {
@@ -20,9 +20,9 @@ class Player extends React.Component {
                 },
                 {
                     id: 2,
-                    title: "Ring",
-                    src: ring,
-                    length: "1:47",
+                    title: "Light me Up",
+                    src: lightMeUp,
+                    length: "1:37",
                     type: "sample"
                 },
                 {
