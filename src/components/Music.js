@@ -14,31 +14,32 @@ class Player extends React.Component {
             tracks: [
                 {
                     id: 1,
+                    title: "Moondog",
+                    src: moondog,
+                    length: "3:07",
+                    type: "sample"
+                },
+                {
+
+                    id: 2,
                     title: "Nonsense in Emaj",
                     src: nonsense,
                     length: "2:21",
                     type: "sample"
                 },
+
                 {
-                    id: 2,
+                    id: 3,
                     title: "Light me Up",
                     src: lightMeUp,
                     length: "1:37",
                     type: "sample"
                 },
                 {
-                    id: 3,
+                    id: 4,
                     title: "Very Last Drop",
                     src: veryLastDrop,
                     length: "0:59",
-                    type: "sample"
-                },
-
-                {
-                    id: 4,
-                    title: "Moondog",
-                    src: moondog,
-                    length: "3:07",
                     type: "sample"
                 },
 
@@ -126,9 +127,9 @@ class Player extends React.Component {
         // var percent = event.offsetX / this.offsetWidth;
         // player.currentTime = percent * player.duration;
         // progressbar.value = percent / 100;
-        if (this.state.duration){
+        if (this.state.duration) {
             const percent = e.nativeEvent.offsetX / this.progressBar.current.offsetWidth;
-            this.audio.currentTime =  percent * this.state.duration;
+            this.audio.currentTime = percent * this.state.duration;
         }
     }
 
