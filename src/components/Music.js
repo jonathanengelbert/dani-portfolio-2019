@@ -4,6 +4,7 @@ import React from "react";
 import nonsense from '../assets/audio/nonsense.mp3';
 import veryLastDrop from '../assets/audio/very-last-drop.mp3';
 import lightMeUp from '../assets/audio/light-me-up.mp3';
+import moondog from '../assets/audio/moondog .mp3';
 
 class Player extends React.Component {
     constructor(props) {
@@ -35,6 +36,14 @@ class Player extends React.Component {
 
                 {
                     id: 4,
+                    title: "Moondog",
+                    src: moondog,
+                    length: "3:07",
+                    type: "sample"
+                },
+
+                {
+                    id: 5,
                     title: "I let myself feel all the time",
                     src: "/audio/i-let-myself-feel-all-the-time.mp3",
                     length: "2:00",
